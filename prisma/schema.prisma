@@ -1,0 +1,75 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model lovs {
+  createdAt DateTime  @default(now()) @db.Timestamp(0)
+  updatedAt DateTime  @default(now()) @db.Timestamp(0)
+  id        Int       @id @default(autoincrement())
+  type      lovs_type
+  value     String    @db.Text
+  text      String    @db.Text
+
+  tasksAsType     tasks[] @relation("tasks_type")
+  tasksAsPriority tasks[] @relation("tasks_priority")
+}
+
+model migrations {
+  id        Int    @id @default(autoincrement())
+  timestamp BigInt
+  name      String @db.VarChar(255)
+}
+
+model Projects {
+  id          Int      @id @default(autoincrement())
+  code        String   @unique
+  title       String
+  description String? // Campo opcional
+  isCompleted Boolean  @default(false)
+  createdBy   Int
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model tasks {
+  id          Int      @id @default(autoincrement())
+  taskId      String?  @unique @db.VarChar(255)
+  title       String   @db.Text
+  description String?  @db.Text
+  reporterId  Int
+  assigneeId  Int?
+  projectId   Int
+  typeId      Int?
+  priorityId  Int?
+  createdAt   DateTime @default(now()) @db.Timestamp(0)
+  updatedAt   DateTime @updatedAt @db.Timestamp(0)
+
+  // Relaciones
+  type     lovs? @relation("tasks_type", fields: [typeId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  priority lovs? @relation("tasks_priority", fields: [priorityId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([priorityId], map: "FK_a396efb8f415c1b4970cdea6d4f")
+  @@index([typeId], map: "FK_b6146961ce2699a63b5bd227a95")
+}
+
+model users {
+  createdAt DateTime @default(now()) @db.Timestamp(0)
+  updatedAt DateTime @default(now()) @db.Timestamp(0)
+  id        Int      @id @default(autoincrement())
+  firstName String   @db.Text
+  lastName  String   @db.Text
+  email     String   @unique @db.VarChar(255)
+  password  String   @db.VarChar(255)
+  role      String   @default("team_member") // Roles: "admin", "team_member"
+  language  String   @default("en-US") @db.VarChar(10)
+}
+
+enum lovs_type {
+  TASK_TYPE
+  TASK_PRIORITY
+}
