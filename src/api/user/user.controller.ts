@@ -20,7 +20,7 @@ export class UserController {
 
   @UseInterceptors(ClassSerializerInterceptor)
   @Get()
-  @Roles('admin')
+  @Roles('admin','team_member')
   @ApiOperation({ summary: 'Get all users', description: 'Retrieve a list of all users. Only accessible by administrators.' })
   @ApiResponse({ status: 200, description: 'List of users successfully retrieved', })
   @ApiResponse({ status: 401, description: 'Unauthorized. JWT token is missing or invalid' })

@@ -3,6 +3,7 @@ import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
 async function main() {
+  // Crear LOVs (List of Values)
   await prisma.lovs.createMany({
     data: [
       // Priorities
@@ -15,6 +16,20 @@ async function main() {
       { text: 'Story', type: 'TASK_TYPE', value: 'STORY' },
     ],
   });
+
+  // Crear un usuario de tipo admin
+  await prisma.users.create({
+    data: {
+      firstName: 'Admin',
+      lastName: 'User',
+      email: 'admin@example.com',
+      password: 'securepassword', // Asegúrate de hashear esta contraseña en un entorno real
+      role: 'admin', // Rol de administrador
+      language: 'en-US',
+    },
+  });
+
+  console.log('Seed data created successfully.');
 }
 
 main()
