@@ -5,9 +5,9 @@ import { ProjectModule } from './project/project.module';
 import { TaskModule } from './task/task.module';
 import { LovModule } from './lov/lov.module';
 import { UiModule } from './ui/ui.module';
-
+import { PingModule } from '../ping/ping.module';
 @Module({
-  imports: [ UserModule, AuthModule, ProjectModule, TaskModule, LovModule, UiModule ],
+  imports: [ UserModule, AuthModule, ProjectModule, TaskModule, LovModule, UiModule, PingModule ],
 })
 
 export class ApiModule {}
