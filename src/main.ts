@@ -7,18 +7,16 @@ async function bootstrap() {
 
     const app = await NestFactory.create(AppModule);
 
-    app.enableCors({
-        origin: '*',
-        credentials: true
-    });
+    const allowedOrigins = [
+        'https://jira-frontend-next-production.up.railway.app',
+        'http://localhost:3001'
+    ];
 
-    app.useGlobalPipes(
-        new ValidationPipe({
-            whitelist: true,
-            forbidNonWhitelisted: true,
-            transform: true,
-        }),
-    );
+    app.enableCors({
+        origin: allowedOrigins,
+        credentials: true,
+        allowedHeaders: ['Content-Type', 'Authorization'],
+    });
 
     const config = new DocumentBuilder()
         .setTitle('API Documentation')
