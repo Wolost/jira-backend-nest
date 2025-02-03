@@ -31,7 +31,7 @@ npm install
 ### 3️⃣ **Configurar Variables de Entorno**
 Crea un archivo `.env` en la raíz del proyecto y añade:
 ```env
-DATABASE_URL="postgresql://user:password@localhost:5432/mydb"
+DATABASE_URL="mysql://user:password@localhost:5432/mydb"
 PORT=3000
 ```
 

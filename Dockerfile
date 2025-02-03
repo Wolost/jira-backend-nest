@@ -20,7 +20,7 @@ RUN npm run build
 ENV PORT=${PORT}
 
 # Exponer el puerto (opcional, Railway lo maneja automáticamente)
-EXPOSE ${PORT}
+# EXPOSE ${PORT}
 
 
 # Comando para ejecutar la aplicación
