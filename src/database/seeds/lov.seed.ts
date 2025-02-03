@@ -17,14 +17,13 @@ async function main() {
     ],
   });
 
-  // Crear un usuario de tipo admin
   await prisma.users.create({
     data: {
       firstName: 'Admin',
       lastName: 'User',
       email: 'admin@example.com',
-      password: 'securepassword', // Asegúrate de hashear esta contraseña en un entorno real
-      role: 'admin', // Rol de administrador
+      password: 'securepassword',
+      role: 'admin',
       language: 'en-US',
     },
   });
