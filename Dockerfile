@@ -16,8 +16,12 @@ COPY . .
 # Construir la aplicación
 RUN npm run build
 
-# Exponer el puerto
-EXPOSE 3000
+# Usar el puerto asignado por Railway
+ENV PORT=${PORT}
+
+# Exponer el puerto (opcional, Railway lo maneja automáticamente)
+EXPOSE ${PORT}
+
 
 # Comando para ejecutar la aplicación
 CMD ["node", "dist/main"]

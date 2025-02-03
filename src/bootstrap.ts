@@ -34,7 +34,7 @@ export async function bootstrap() {
   SwaggerModule.setup('docs', app, document);
 
   const logger = new Logger('bootstrap');
-  const port = parseInt(process.env.APP_PORT, 10)
+  const port = parseInt(process.env.PORT, 10)
   await app.listen(port, () => {
     logger.log(`Server is listen on http://localhost:${port}`);
   });
