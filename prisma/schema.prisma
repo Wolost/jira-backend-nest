@@ -59,7 +59,7 @@ model projects {
   createdAt   DateTime @default(now())
   updatedAt   DateTime
   id          Int      @id @default(autoincrement())
-  code        String
+  code        String   @unique
   title       String
   description String?
   isCompleted Boolean  @default(false)

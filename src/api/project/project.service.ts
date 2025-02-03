@@ -11,11 +11,17 @@ export class ProjectService {
   constructor(private readonly prisma: PrismaService) { }
 
   async create(params: CreateProjectDto & { createdBy: number }) {
-    return this.prisma.projects.create({ data: params });
+    return this.prisma.projects.create({
+      data: {
+        ...params,
+        updatedAt: new Date(),
+      }
+    });
   }
-
-  async findByCode(code: string): Promise<Project> {
-    return this.prisma.projects.findUnique({ where: { code: code.toUpperCase() } });
+  async findByCode(code: string): Promise<Project | null> {
+    return this.prisma.projects.findUnique({
+      where: { code: code.toUpperCase() },
+    });
   }
 
   async findById(id: number): Promise<Project> {
