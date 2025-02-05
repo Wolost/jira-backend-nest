@@ -9,7 +9,7 @@ async function bootstrap() {
 
     const allowedOrigins = [
         'https://jira-frontend-next-production.up.railway.app',
-        'http://localhost:3001'
+        'http://localhost:3000'
     ];
 
     app.enableCors({
