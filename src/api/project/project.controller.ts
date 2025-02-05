@@ -72,7 +72,9 @@ export class ProjectController {
     const project = await this.projectService.create({ ...createProjectDto, createdBy: user.id });
 
     if (project) {
-      res.status(HttpStatus.OK).send();
+      res.status(HttpStatus.OK).json({
+        message: 'Project successfully created.',
+        data: { code: project.code }}).send();
     } else {
       res.status(HttpStatus.BAD_REQUEST).send();
     }
