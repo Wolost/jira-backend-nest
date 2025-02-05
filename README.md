@@ -1,50 +1,50 @@
-# 🚀 Proyecto NestJS con Prisma, Swagger, Docker y Validaciones
+# 🚀 NestJS Project with Prisma, Swagger, Docker, and Validations
 
-## 📌 Descripción del Proyecto
-Este proyecto es una API REST desarrollada con **NestJS**, utilizando **Prisma** como ORM, **Swagger** para la documentación, **Docker** para la contenedorización y **class-validator** para validaciones en los DTOs. Además, cuenta con pruebas unitarias e integración configuradas con **Jest** y **Supertest**.
-
----
-
-## 📋 Características Principales
-✅ **NestJS** - Framework de Node.js con arquitectura modular.  
-✅ **Prisma** - ORM moderno y potente para la gestión de base de datos.  
-✅ **Swagger** - Documentación automática y visual de la API.  
-✅ **Docker** - Contenedorización para despliegue y desarrollo ágil.  
-✅ **Class-Validator** - Validaciones en DTOs para asegurar datos consistentes.  
-✅ **Jest y Supertest** - Pruebas unitarias e integración para asegurar calidad.  
+## 📌 Project Description
+This project is a REST API developed with **NestJS**, using **Prisma** as ORM, **Swagger** for documentation, **Docker** for containerization, and **class-validator** for DTO validations. Additionally, it includes unit and integration tests configured with **Jest** and **Supertest**.
 
 ---
 
-## ⚙️ Configuración del Proyecto
+## 📋 Main Features
+✅ **NestJS** - Node.js framework with modular architecture.  
+✅ **Prisma** - Modern and powerful ORM for database management.  
+✅ **Swagger** - Automatic and visual API documentation.  
+✅ **Docker** - Containerization for agile deployment and development.  
+✅ **Class-Validator** - DTO validations to ensure consistent data.  
+✅ **Jest & Supertest** - Unit and integration tests for quality assurance.  
 
-### 1️⃣ **Clonar el Repositorio**
+---
+
+## ⚙️ Project Setup
+
+### 1️⃣ **Clone the Repository**
 ```bash
-git clone 
-cd tu-repositorio
+git clone
+cd your-repository
 ```
 
-### 2️⃣ **Instalar Dependencias**
+### 2️⃣ **Install Dependencies**
 ```bash
 npm install
 ```
 
-### 3️⃣ **Configurar Variables de Entorno**
-Crea un archivo `.env` en la raíz del proyecto y añade:
+### 3️⃣ **Configure Environment Variables**
+Create a `.env` file at the project root and add:
 ```env
 DATABASE_URL="mysql://user:password@localhost:5432/mydb"
-PORT=3000
+PORT=3001
 ```
 
 ---
 
-## 🔧 **Ejecución del Proyecto**
+## 🔧 **Running the Project**
 
-### ▶️ **Ejecutar en Desarrollo**
+### ▶️ **Run in Development Mode**
 ```bash
 npm run start:dev
 ```
 
-### 🏗 **Construir y Ejecutar en Producción**
+### 🏗 **Build and Run in Production**
 ```bash
 npm run build
 npm run start
@@ -52,34 +52,33 @@ npm run start
 
 ---
 
-## 🗄 **Configuración de Base de Datos con Prisma**
+## 🗄 **Database Setup with Prisma**
 
-### 1️⃣ **Generar el Cliente de Prisma**
+### 1️⃣ **Generate Prisma Client**
 ```bash
 npx prisma generate
 ```
 
-### 2️⃣ **Ejecutar Migraciones**
+### 2️⃣ **Run Migrations**
 ```bash
 npx prisma migrate dev --name init
 ```
 
-### 3️⃣ **Ejecutar Semillas de Datos**
+### 3️⃣ **Seed Database**
 ```bash
 npm run seed
 ```
 
 ---
 
-## 📑 **Documentación de la API con Swagger**
-La documentación de la API está disponible después de iniciar el servidor en:  
-➡️ [http://localhost:3000/api/docs](http://localhost:3000/api/docs)
+## 📑 **API Documentation with Swagger**
+The API documentation is available after starting the server at:  
+➡️ [http://localhost:3001/api/docs](http://localhost:3001/api/docs)
 
 ---
 
-## ✅ **Validaciones con Class-Validator**
-Se implementan validaciones en los DTOs para asegurar la integridad de los datos.
-Ejemplo de un DTO con validaciones:
+## ✅ **Validations with Class-Validator**
+DTO validations ensure data integrity. Example of a DTO with validations:
 ```typescript
 import { ApiProperty } from '@nestjs/swagger';
 import { IsNotEmpty, IsString, IsInt, Min } from 'class-validator';
@@ -99,53 +98,53 @@ export class CreateTaskDto {
 
 ---
 
-## 🔬 **Pruebas con Jest y Supertest**
+## 🔬 **Testing with Jest and Supertest**
 
-### 1️⃣ **Ejecutar Pruebas Unitarias**
+### 1️⃣ **Run Unit Tests**
 ```bash
 npm run test
 ```
 
-### 2️⃣ **Ejecutar Pruebas de Integración**
+### 2️⃣ **Run Integration Tests**
 ```bash
 npm run test:e2e
 ```
 
 ---
 
-## 🐳 **Dockerización del Proyecto**
+## 🐳 **Dockerizing the Project**
 
-### 1️⃣ **Construir y Ejecutar con Docker**
+### 1️⃣ **Build and Run with Docker**
 ```bash
 docker-compose up -d
 ```
 
-### 2️⃣ **Ver Contenedores Activos**
+### 2️⃣ **Check Active Containers**
 ```bash
 docker ps
 ```
 
-### 3️⃣ **Detener y Eliminar Contenedores**
+### 3️⃣ **Stop and Remove Containers**
 ```bash
 docker-compose down
 ```
 
 ---
 
-## ⚡ **Decisiones Técnicas**
+## ⚡ **Technical Decisions**
 
-1️⃣ **Prisma como ORM**: Se eligió Prisma por su facilidad de uso, tipado fuerte y capacidad de generar migraciones fácilmente.  
-2️⃣ **NestJS como Framework**: Se utilizó NestJS por su arquitectura modular y soporte para TypeScript.  
-3️⃣ **Swagger para Documentación**: Se implementó Swagger para facilitar la exploración y uso de la API.  
-4️⃣ **Docker para Contenedorización**: Permite un entorno de desarrollo y despliegue consistente.  
-5️⃣ **Class-Validator**: Asegura que los datos enviados a la API sean correctos y válidos.  
-6️⃣ **Jest y Supertest**: Garantiza la calidad del código mediante pruebas unitarias e integración.  
+1️⃣ **Prisma as ORM**: Chosen for its ease of use, strong typing, and simple migration handling.  
+2️⃣ **NestJS as Framework**: Used for its modular architecture and TypeScript support.  
+3️⃣ **Swagger for Documentation**: Implemented to facilitate API exploration and usage.  
+4️⃣ **Docker for Containerization**: Ensures a consistent development and deployment environment.  
+5️⃣ **Class-Validator**: Ensures that the data sent to the API is correct and valid.  
+6️⃣ **Jest & Supertest**: Guarantees code quality through unit and integration tests.  
 
 ---
 
-## 📬 **Contacto y Contribución**
-Si quieres contribuir, haz un fork del repositorio y crea un Pull Request con tus mejoras.  
+## 📬 **Contact & Contribution**
+If you want to contribute, fork the repository and create a Pull Request with your improvements.  
 
-📧 Contacto: [alejomuvez@gmail.com](mailto:alejomuvez@gmail.com)  
-💻 Desarrollado con ❤️ por [Alejandro Muñoz - Wolost]  
+📧 Contact: [alejomuvez@gmail.com](mailto:alejomuvez@gmail.com)  
+💻 Developed with ❤️ by [Alejandro Muñoz - Wolost]  
 
